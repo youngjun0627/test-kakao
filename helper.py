@@ -24,18 +24,9 @@ class WaitQ(object):
 
     def sort(self, time, total_visit):
         pair = []
-        check = False
         while self.q:
             from_time, id = heapq.heappop(self.q)
-            if check:
-                check=False
-                B_id = id
-                self.pairs.append([A_id, B_id])
-                self.visit[A_id] = True
-                self.visit[B_id] = True
-                continue
             if time-from_time>self.MAX_TIME:
-                check = True
                 _min = 9999999
                 A_id = id
                 for B in self.q:
